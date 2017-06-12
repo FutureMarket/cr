@@ -129,8 +129,64 @@
 		</div>
 	</div>
 </section>
-
-
+<section class="section-white section scrollspy center-align" id="launch" >
+	<h2 class="sectionhead"><strong style="color: #FF6F00; font-weight: 800;">ICO</strong><br />Launch In</h2>
+	<span class="separator"></span>
+	<div class="container">
+		<div class="row">
+			<div class="countdown text-center">
+			    <div class="time-circle">
+			      <div class="progress"></div>
+			      <span class="time days"></span>
+			      <span class="time-name">days</span>
+			    </div>
+			    <span class="dots">:</span>
+			    <div class="time-circle">
+			      <div class="progress"></div>
+			      <span class="time hours"></span>
+			      <span class="time-name">hrs</span>
+			    </div>
+			    <span class="dots">:</span>
+			    <div class="time-circle">
+			      <div class="progress"></div>
+			      <span class="time minutes"></span>
+			      <span class="time-name">min</span>
+			    </div>
+			    <span class="dots">:</span>
+			    <div class="time-circle">
+			      <div class="progress"></div>
+			      <span class="time seconds"></span>
+			      <span class="time-name">sec</span>
+			    </div>
+	  		</div>
+	  		<h3 class="sectioninfo"><span style="color:#ff5a00;font-weight:bold;font-size:4rem; display: block; padding-bottom: 20px;">25% Bonus</span> only on the first day of the ICO</h3>
+		</div>
+		<div class="separator"></div>
+		<div class="row">
+			<div class="info-spinner">
+				<div class="info-circle">
+					<span class="info value">0</span>
+					<span class="info-name">value</span>
+				</div>
+				<div class="info-circle">
+					<span class="info participant">0</span>
+					<span class="info-name">participant</span>
+				</div>
+				<div class="info-circle">
+					<span class="info issued">0</span>
+					<span class="info-name">issued</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ctacont">
+		<div class="center-align" style="margin:80px 0">
+			<h4 class="cta">Enter our World!</h4>
+			<a class="btn btn-large amber darken-4 subbtn ">Reserve Your Corions Now</a>
+		</div>
+	</div>
+</section>
 <section class="section-white section scrollspy center-align" id="vision">
 	<h2 class="sectionhead">CORION Vision</h2>
 	<span class="separator"></span>
@@ -1045,10 +1101,9 @@
 				</div>
 			</div>
 		</div>
-
-
+		<div style="color:#aaa" class="row center-align">Contact us with your technical problem: <a href="mailto:support[at]corion(dot)io">support[at]corion(dot)io</a></div>
 		<div class="row center-align">
-			<p style="color:#aaa">CORION &copy; 2017 | All Rights Reserved. | CrypMo Foundation Switzerland 6301 Zug, Grafenauweg 10. | <a href="mailto:contact@corion.io">contact@corion.io</a></p>
+			<p style="color:#aaa">CORION &copy; 2017 | All Rights Reserved. | CrypMo Foundation Switzerland 6301 Zug, Grafenauweg 10. | <a href="mailto:contact[at]corion(dot)io">contact[at]corion(dot)io</a></p>
 		</div>
 	</div>
 </section>
@@ -1060,7 +1115,7 @@
 		<div class="card horizontal">
 			<div class="container">
 				<div class="row">
-					<div class="col s12 center-align m6 l4"><img alt="Miklós Denkler" class="responsive-img" src="%%RESLINK%%img/teamimg/Miklós_Denkler.jpg" title="Miklós Denkler">
+					<div class="col s12 center-align m6 l4"><img alt="Miklós Denkler" class="responsive-img" src="%%RESLINK%%img/teamimg/Miklos_Denkler.jpg" title="Miklós Denkler">
 					</div>
 
 
@@ -1267,7 +1322,7 @@
 		<div class="card horizontal">
 			<div class="container">
 				<div class="row">
-					<div class="col s12 center-align m6 l4"><img alt="Zsolt Németh" class="responsive-img" src="%%RESLINK%%img/teamimg/Zsolt_Nemeth.png" title="Zsolt Németh">
+					<div class="col s12 center-align m6 l4"><img alt="Zsolt Németh" class="responsive-img" src="%%RESLINK%%img/teamimg/Zsolt_Nemeth.jpg" title="Zsolt Németh">
 					</div>
 
 
@@ -1438,7 +1493,7 @@
 		<div class="card horizontal">
 			<div class="container">
 				<div class="row">
-					<div class="col s12 center-align m6 l4"><img alt="István Kele" class="responsive-img" src="%%RESLINK%%img/teamimg/Kele_Istvan.jpg" title="István Kele">
+					<div class="col s12 center-align m6 l4"><img alt="István Kele" class="responsive-img" src="%%RESLINK%%img/teamimg/Istvan_Kele.jpg" title="István Kele">
 					</div>
 
 
@@ -1712,7 +1767,16 @@ implementation. </p>
 
 <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script> 
 <script src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js'></script> 
+<script src="%%RESLINK%%js/countdown%%DEVMINFILE%%.js" type="text/javascript" async></script>
+<script src="%%RESLINK%%js/spinner%%DEVMINFILE%%.js" type="text/javascript" async></script>
 <script>
+		$(function() {
+		 $('a[href^="mailto:"]').each(function() {
+		  this.href = this.href.replace('[at]', '@').replace(/\(dot\)/g, '.');
+		  // Remove this line if you don't want to set the email address as link text:
+		  this.innerHTML = this.href.replace('mailto:', '');
+		 });
+		});
 	(function($) {
 		$(document).on("click", ".subbtn", function(){
 			window.location.href = "%%LINK%%buy";
