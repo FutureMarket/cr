@@ -20,12 +20,14 @@
   -webkit-border-radius: 50%;
   border-radius: 50%;
   font-size: 54px;
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
+  width: 200px;
+  height: 200px;
+  line-height: 192px;
   text-align: center;
   position: relative;
   background: #004e92;
+  margin-bottom: 25px;
+  margin-right: 25px;
 }
 .countdown .time-circle:hover {
   background: #004988;
@@ -37,7 +39,7 @@
 .countdown .time-circle .time {
   display: -moz-inline-stack;
   display: inline-block;
-  font-size: 54px;
+  font-size: 113px;
 }
 .countdown .time-circle .time-name {
   font-size: 16px;
@@ -51,8 +53,8 @@
   opacity: 0.4;
 }
 .countdown .time-circle .progress {
-  width: 126px;
-  height: 126px;
+  width: 206px;
+  height: 206px;
   position: absolute;
   left: -3px;
   top: -3px;
@@ -84,7 +86,7 @@
 }
 .countdown .dots {
   display: -moz-inline-stack;
-  display: inline-block;
+  display: none;
   padding: 15px 5px;
   font-size: 60px;
   color: #004e92;
@@ -118,38 +120,22 @@
 }
 @media only screen and (max-width: 700px) {
 	.countdown .time-circle {
-	  font-size: 60px;
-	  width: 90px;
-	  height: 90px;
-	  line-height: 72px;
+		display: inline-block;
+		margin-bottom: 25px;
+		margin-right: 25px;
 	}
-	.countdown .time-circle .progress {
-	  width: 95px;
-	  height: 95px;
-	}
-	.countdown .dots {
+	.countdown .dots{
 		padding: 0px;
+		font-size: 8vw;
 	}
+	.countdown .dots{
+		display: none;	
+	}
+	
 }
 @media only screen and (max-width: 500px) {
 	.countdown {
 		margin: 0 auto;
 	}
-	.countdown .time-circle {
-	  font-size: 30px;
-	  width: 70px;
-	  height: 70px;
-	  line-height: 55px;
-	}
-	.countdown .time-circle .time {
-	  font-size: 35px;
-	}
-	.countdown .time-circle .progress {
-	  width: 75px;
-	  height: 75px;
-	}
-	.countdown .dots {
-		padding: 0px;
-		font-size: 30px;
-	}
+	
 }
