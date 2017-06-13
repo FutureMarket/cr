@@ -1,8 +1,8 @@
-var Vvalue = 215203;
+var Vvalue = 231900;
 var Vparticipant = 56;
-var Vissued = 279855;
+var Vissued = 301470;
 var TheFutureMarkethu = '0';
-var Cheight = $('.countdown').outerHeight(true)+$('#atf').outerHeight(true);
+var Cheight = ($('.countdown').outerHeight(true)+$('#atf').outerHeight(true))-($('.info-spinner').outerHeight(true)/2);
 
 	
   // from my pen: https://codepen.io/kryo2k/pen/NPxVZN
@@ -273,7 +273,7 @@ function porog(){
 	var // participant
 	  partcElValue  = Vparticipant,
 	  partcElSpeed  = '1500',
-	  partcElSteps  = '2',
+	  partcElSteps  = '100',
 	  partcElPrec   = '0',
 	  partcElAlgo   = 'quintOut',
 	  partc = $('.participant').numberSpin({
@@ -320,14 +320,19 @@ function porog(){
 };
 $(document).ready(function () {
 	
-	$(window).scroll(function () {
-		
-		if(($(window).scrollTop() > (Cheight)) && TheFutureMarkethu === '0' ){
+	if(($(window).scrollTop() >= (Cheight)) && TheFutureMarkethu === '0' ){
 			TheFutureMarkethu = '1';
 			porog();
-		}
-		
-		
-	});
-
+	}
+	if (TheFutureMarkethu === '0') {			
+		$(window).scroll(function () {
+			console.log({'Cheight':Cheight, 'Scroll': $(window).scrollTop()});
+			if(($(window).scrollTop() >= (Cheight)) && TheFutureMarkethu === '0' ){
+				TheFutureMarkethu = '1';
+				porog();
+				
+			}		
+		});
+	}
+	
 });
