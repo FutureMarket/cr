@@ -36,11 +36,11 @@ $(document).ready(
 	
 	      function setScale(type, degree) {
 	        type.css({
-	          '-webkit-transform': 'rotate(' + -degree * 6 + 'deg)',
-	          '-moz-transform': 'rotate(' + -degree * 6 + 'deg)',
-	          '-ms-transform': 'rotate(' + -degree * 6 + 'deg)',
-	          '-o-transform': 'rotate(' + -degree * 6 + 'deg)',
-	          'transform': 'rotate(' + -degree * 6 + 'deg)'
+	          '-webkit-transform': 'rotate(' + degree * 6 + 'deg)',
+	          '-moz-transform': 'rotate(' + degree * 6 + 'deg)',
+	          '-ms-transform': 'rotate(' + degree * 6 + 'deg)',
+	          '-o-transform': 'rotate(' + degree * 6 + 'deg)',
+	          'transform': 'rotate(' + degree * 6 + 'deg)'
 	        });
 	      };
 	
