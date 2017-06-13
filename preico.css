@@ -531,6 +531,20 @@ body {
 	width: 100%;
 	height: 100%;
 }
+#info-ticker{
+	background: rgba(241, 89, 33, 0.8);
+	color: #FFF;
+	text-align: center;
+	padding: 10px;
+	width: 50%;
+	margin: 0px auto;
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 997;
+	top: 85px;
+	cursor: pointer;
+}
 @media only screen and (max-width: 500px) {
 	.btn-large{
 		height: auto !important;
