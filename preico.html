@@ -1,4 +1,4 @@
-<link href="%%RESLINK%%css/preico%%DEVMINFILE%%.css?ver=3" rel="stylesheet">
+<link href="%%RESLINK%%css/preico%%DEVMINFILE%%.css%%RESVERSION%%" rel="stylesheet">
 <div class="navbar-fixed">
 	<nav class="white" style="background-color: rgba(255,255,255,0.90) !important;">
 		<div class="nav-wrapper">
@@ -87,7 +87,7 @@
 		</div>
 	</nav>
 </div>
-<div id="info-ticker">Ide jön valami szöveg, ami még kidolgozás alatt van!</div>
+<div id="info-ticker">Don’t miss your 30% bonus from Pre-ICO till 16th June</div>
 <div class="full-page-img">
 	<div class="scaleable">
 	</div>
@@ -1765,11 +1765,13 @@ implementation. </p>
 
 
 <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script> 
-<script src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js'></script> 
-<script src="%%RESLINK%%js/countdown%%DEVMINFILE%%.js" type="text/javascript" async></script>
-<script src="%%RESLINK%%js/spinner%%DEVMINFILE%%.js" type="text/javascript" async></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'></script> 
+<script src="%%RESLINK%%js/countdown%%DEVMINFILE%%.js%%RESVERSION%%" type="text/javascript" async></script>
+<script src="%%RESLINK%%js/spinner%%DEVMINFILE%%.js%%RESVERSION%%" type="text/javascript" async></script>
 <script>
-
+var Vvalue = %%TOTALUSD%%;
+var Vparticipant = %%USERCOUNT%%;
+var Vissued = %%TOTALCOR%%;
 	$(function() {
 //=== Protector ====\\
 		 $('a[href^="mailto:"]').each(function() {
@@ -1781,10 +1783,6 @@ implementation. </p>
 		$(document).on("click", "#info-ticker", function(){
 			$(this).fadeToggle("slow");
 	    });
-	});
-
-	
-	(function($) {
 		$(document).on("click", ".subbtn", function(){
 			window.location.href = "%%LINK%%buy";
 		})
@@ -1797,7 +1795,7 @@ implementation. </p>
 		
 		$('.modal').modal();
 		
-		})(jQuery);
+	})(jQuery);
 	if ( "%%TRACK%%" == "1" ) {
 		var d = new Date();
 		d.setYear(2050);
