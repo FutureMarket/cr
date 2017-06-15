@@ -1,6 +1,4 @@
-var Vvalue = 231900;
-var Vparticipant = 56;
-var Vissued = 301470;
+
 var TheFutureMarkethu = '0';
 var Cheight = ($('.countdown').outerHeight(true)+$('#atf').outerHeight(true))-($('.info-spinner').outerHeight(true)/2);
 
@@ -326,7 +324,7 @@ $(document).ready(function () {
 	}
 	if (TheFutureMarkethu === '0') {			
 		$(window).scroll(function () {
-			console.log({'Cheight':Cheight, 'Scroll': $(window).scrollTop()});
+			//console.log({'Cheight':Cheight, 'Scroll': $(window).scrollTop()});
 			if(($(window).scrollTop() >= (Cheight)) && TheFutureMarkethu === '0' ){
 				TheFutureMarkethu = '1';
 				porog();
