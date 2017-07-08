@@ -1,0 +1,316 @@
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link href="%%RESLINK%%css/buy%%DEVMINFILE%%.css%%RESVERSION%%" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.14.0/jquery-qrcode.min.js" type="text/javascript"></script>
+<script src="%%RESLINK%%js/FileSaver.min.js" type="text/javascript"></script>
+<script src="%%RESLINK%%js/elliptic.min.js" type="text/javascript"></script>
+<script src="%%RESLINK%%js/sjcl.min.js" type="text/javascript"></script>
+<script src="%%RESLINK%%js/safewords.min.js" type="text/javascript"></script>
+<script src="%%RESLINK%%js/buy%%DEVMINFILE%%.js%%RESVERSION%%" type="text/javascript"></script>
+<script type="text/javascript">
+	var etcrate = new BigNumber(%%ETCRATE%%);
+	var ethrate = new BigNumber(%%ETHRATE%%);
+	var btcrate = new BigNumber(%%BTCRATE%%);
+	var icobonus = new BigNumber(%%ICOBONUS%%);
+	var existingaddress = "%%USERADDRESS%%";
+</script>
+<!-- multistep form -->
+<div id="msform" class="row" style="margin-bottom:0px;">
+	<div class="paytothisaddr col s12">
+		<img src="//corion.io/img/logo.png">
+		<h2 class="fs-title" style="margin-bottom:20px">Payment address</h2>
+		<h2 class="fs-subtitle paymentsub"></h2>
+		<span class="separator" style="margin:30px auto 10px auto;"></span>
+		<div class=" col m3 s12 center-align">
+			<div id="qrcode" style=""></div>
+		</div>
+		<div class=" col m9 s12 center-align">
+			<input id="btcaddr" readonly value=""><button class="copybtn paycopy" data-clipboard-target="#btcaddr"><i class="fa fa-clipboard" title="Copy to clipboard"></i></button>
+			<h4 class="amount-to-send"></h4>
+		</div>
+	</div>
+	<!-- progressbar -->
+	<div class="row" style="margin-bottom:0">
+		<ul id="progressbar" class="col s12">
+			<li class="col m4 s12 active">Exchange Amount</li>
+			<li clsaa="col m4 s12">Payment & CORION address</li>
+			<li clsaa="col m4 s12">Wallet registration</li>
+		</ul>
+	</div>
+	<!-- steps -->
+	<div class="step-1 row" style="margin-bottom:0px;">
+		<div class="col s12">
+			<img src="//corion.io/img/logo.png">
+			<h2 class="fs-title">Exchange Currency and amount</h2>
+			<span class="separator" style="margin:30px auto 30px auto;"></span>
+
+			<p style="text-align: center; font-weight: 700; margin: 20px auto; background: #ff5a00; width: 95%; padding: 10px; color: white; font-size:0.9rem">Please bear in mind that exchange rates can change in a second, and the final Corion amount is credited to you only at the moment of payment, which can be immediate or can take minutes, even hours depending on you. So your final number of CORIONS can differ from the one displayed here, which we cannot be held responsible for.</p>
+			<form id="exchanger">
+			<p class="premiumcounter" style="text-align:center">a</p>
+				<div style="margin-bottom:30px" lang="en-US">
+					<button disabled style="border:none; position: relative; display: inline-block; width: 108px; padding: 14px 0 16px 0; font-size: 18px; font-weight: 300; color: #fff; line-height: 18px; text-align:center; background: #004e92; border-radius: 4px">CORION</button>
+					<input type="number" id="cortotal" placeholder="1000" min="0" max="10000000" step="0.000001" style="margin-bottom:0" value="1000" />
+				</div>
+				<h4 style="font-size:2.2rem;margin-bottom:30px;margin-top:0px; line-height: .4em;" id="cornum"><i class='fa fa-plus-circle' style='color:#FF5A00;display:inline-block;vertical-align:middle'></i><span style="font-size:1rem"><span style="color:#ff5a00;font-size:1.3rem;font-weight:bold">0.000000</span> <span style="font-weight:bold;font-size:1.3rem;color:#002961">COR</span><br/><span class="preicobonus-text"></span> ICO bonus</span></h4>
+				<div lang="en-US">
+					<input type="number" id="corexd" placeholder="0.5" min="0" max="" step="0.0000000001"/>
+					<select name="sources" id="sources" class="currency-select sources" placeholder="Currency">
+						<option id="curbtc" value="BTC">BTC</option>
+						<option id="cureth" value="ETH">ETH</option>
+						<option id="curetc" value="ETC">ETC</option>
+					</select>
+				</div>
+				<p class="tinyalert"></p>
+				<div class="row" style="margin-bottom:0">
+				<p class="left-align"><input autocomplete="off" id="toscheck" type="checkbox"><label class="checkbox" for="toscheck" style="color:#222">I have read and accept <a href="#terms-of-service" style="color:ff5a00;">Terms of Service</a>.</label></p>
+				<p class="left-align"><input autocomplete="off" id="tusa" type="checkbox"><label class="checkbox" for="tusa" style="color:#222">I am not a US citizen.</label></p>
+					<button class="to-step-2 action-button">Next</button>
+				</div>
+				<p style="text-align:center;font-size:.7em">Do you have any question? <a href="%%RESLINK%%faq" target="_blank">Here are the answers</a></p>
+				<div class="g-recaptcha"
+			          data-sitekey="6LfGFh0UAAAAAKk7my9UQmxKVyPp8xvJyq7z4GcB"
+			          data-callback="captcha_callback_step2"
+			          data-size="invisible"
+			          data-badge="inline">
+			    </div>
+			</form>
+		</div>
+	</div>
+	<div class="step-2 row" style="margin-bottom:0px;">
+		<div class="col s12">
+			<h2 class="fs-title" style="margin-bottom:20px">Wallet keys, download and payment</h2>
+			<h3 class="fs-subtitle cortotalholder"></h3>
+			<span class="separator" style="margin:30px auto 60px auto;"></span>
+			<div class="row">
+				<button class="generateaddress addrbtn">Generate new address</button>
+				<button class="haveaddress addrbtn">I already have an ETC address</button>
+				<div class="addressopt1">
+					<div>
+						<h2 class="fs-title" style="font-size:18px;">Your Public address</h2>
+						<input id="ethpub" readonly style="width: 78%;display: inline;" type="text" value="">
+						<button class="copybtn" data-clipboard-target="#ethpub">
+						<i class="fa fa-clipboard" title="Copy public key to clipboard"></i>
+						</button>
+						<button class="regenbrain copybtn" title="Regenerate brain wallet and address">
+						<i class="fa fa-refresh"></i>
+						</button>
+						<button class="showpriv copybtn" style="width:60% !important;display:inline-block;padding:5px 5px;font-size:1.2em" title="Show private key and brain wallet">
+						<i class="fa fa-eye" style="font-size:1.5em"></i> Show private details
+						</button>
+					</div>
+					<div class="addressshowpriv">
+						<div>
+							<p class="downloadwarning">
+								<b>We don’t save your private key</b>, it’s your job to reserve it in a safe place. But who wants to learn a 64-character long code? That’s why we implemented Brainwallet. You only have to write those 5-10 words down (bits are free to choose) and you can hash back your private key anytime.
+							</p>
+						</div>
+						<div class="col s12 m12 center-align">
+							<h2 class="fs-title" style="font-size:16px;">Your Private key</h2>
+							<div class="input-field">
+								<input id="ethpriv" readonly style="width: 90%;display: inline;" type="text" value=""><button class="copybtn" data-clipboard-target="#ethpriv" style="display:inline-block;width:9%"><i class="fa fa-clipboard" title="Copy private key to clipboard"></i></button>
+							</div>
+						</div>
+						<div class="col s12 m12" style="margin-top:30px;text-align: center;">
+							<h2 class="fs-title" style="font-size:16px;">Brainwallet wordcount</h2>
+							<div class="input-field" style="width: 50%;display: inline-block;margin: 0;">
+								<p class="range-field"><input autocomplete="off" id="brainrange" max="10" min="5" type="range" value="5"></p>
+							</div>
+						</div>
+						<div class="col s12 m12">
+							<h2 class="fs-title" style="font-size:16px;">Your Brainwallet words</h2>
+							<div class="input-field">
+								<input id="ethbrain" readonly style="width: 90%;display: inline;" type="text" value=""> <button class="copybtn" data-clipboard-target="#ethbrain" style="display:inline-block;width:9%"><i class="fa fa-clipboard" title="Copy to clipboard"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 m12 center-align">
+						<div>
+							<p class="downloadwarning">
+								This file is an important one. For your security you need to download it. In case of emergency (your dog has eaten the paper which you wrote your Brainwallet words on) with this file you can fully restore your CORION Wallet. So download and save it!<br/>
+								<button class="dlbtn downloadwallet" style="font-weight:700;margin:20px 5px;color:white;">Download wallet backup file</button>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="addressopt2">
+					<div class="col s12 m12 center-align">
+						<div class="input-field" style="margin-top:4rem">
+							<input class="validate" id="useraddress" pattern="^0x[a-fA-F0-9]{40}$" placeholder="0xa34d....13b4" type="text" value=""> <label for="useraddress" style="padding-bottom:5px">Your existing CORION / ETC address (0xa34d....13b4)</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12 s12">
+					<span class="separator" style="margin:30px auto 60px auto;"></span>
+					<p class="left-align"><input autocomplete="off" id="tosend" type="checkbox"><label class="checkbox" for="tosend" style="color:#222">I have sent the payment to the given address.</label></p>
+				</div>
+			</div>
+			<div class="row center-align">
+				<div class="col s12">
+					<button class="to-step-3" disabled style="" title="Please download your wallet file first">Final&nbsp;step</button>
+					<button class="restart">Start&nbsp;again</button>
+				</div>
+
+				<p style="text-align:center;font-size:.7em">Do you have any question? <a href="%%RESLINK%%faq" target="_blank">Here are the answers</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="step-3">
+		<h2 class="fs-title"> Multifunctional CORION Wallet registration</h2>
+		<span class="separator" style="margin:30px auto 60px auto;"></span>
+		<div class="row">
+			<div class="col s12 m8 offset-m2 center-align">
+				<div id="recaptcha2"></div>
+				<form id="walletreg" class="walletreg">
+					<div class="input-field">
+						<input id="regemail" type="email" validate required placeholder="example@domain.com"> <label for="regemail">Email Address *</label>
+					</div>
+					<div class="input-field">
+						<input id="regemail2" type="email" validate required placeholder="example@domain.com"> <label for="regemail">Email Address confirm *</label>
+					</div>
+					<div class="input-field">
+						<input id="password" type="password" required placeholder="********"> <label for="regemail">Password *</label>
+					</div>
+					<div class="input-field">
+						<input id="password2" type="password" required placeholder="********"> <label for="regemail">Password confirm *</label>
+					</div>
+					<div class="input-field">
+						<input id="firstname" placeholder="John" type="text"> <label for="regemail">First name</label>
+					</div>
+					<p class="left-align"><input autocomplete="off" id="news" type="checkbox" checked><label class="checkbox" for="news" style="color:#222">I want updates & news about CORION</label></p>
+					<button class="btn btn-large blue darken-1 to-step-4" style="font-weight:700;margin:20px 5px;color:white;">Submit</button>
+					
+				<p style="text-align:center;font-size:.7em">Do you have any question? <a href="%%RESLINK%%faq" target="_blank">Here are the answers</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="step-4 center-align">
+		<i class="fa fa-5x fa-check-circle" style="display:block;color:green"></i>
+		<div class="center-align" id="buy-step-4">
+			<div style="font-size:2em;margin-top:20px;color:#262838;">Thank you for joining us, check your inbox please.</div>
+		</div>
+	</div>
+	<div class="step-5 center-align">
+		<i class="fa fa-5x fa-check-circle" style="display:block;color:green"></i>
+		<div class="center-align" id="buy-step-4">
+			<div style="font-size:2em;margin-top:20px;color:#262838;">Thank you for participating in ICO again.</div>
+		</div>
+	</div>
+	<!-- modal -->
+	<div class="modal" id="terms-of-service">
+		<div class="modal-content">
+			<div class="card horizontal">
+				<div>
+					<div class="row">
+	<div class="col s12">
+		<h2 style="font-size:1.9em">Terms of Service</h2>
+<p style="text-align:justify;font-size: .9em;">
+	This page tells you the terms on which you may use the website corion.io (hereinafter: the Site). By using this Site, you indicate that you accept these terms of use and that you agree to abide by them. If you do not agree to these terms of use, please refrain from using this Site.</p>
+	<h4 style="font-size:1em">INFORMATION ABOUT US</h4>
+	<p style="text-align:justify;font-size: .9em;">www.corion.io is a Site operated by CrypMo Fundation ("We"). Our registered office at Switzerland 6301 Zug, Grafenauweg 10.
+	<h4 style="font-size:1em">ACCESSING OUR SITE</h4>
+	<p style="text-align:justify;font-size: .9em;">You are responsible for making all arrangements necessary for you to have access to this Site. You are also responsible for ensuring that all persons who access this Site through your internet connection are aware of these terms, and that they comply with them.
+	<h4 style="font-size:1em">INTELLECTUAL PROPERTY RIGHTS</h4>
+	<p style="text-align:justify;font-size: .9em;">We are the owner or the licensee of all intellectual property rights in this Site, and in the material published on it. Those works are protected by copyright laws and treaties around the world. All such rights are reserved.<br>
+	You must not print off copies or download any extracts from any part of the Site unless expressly authorised by us to do so.<br>
+	If you print off, copy or download any part of our site in breach of these terms of use, your right to use our site will cease immediately and you must, at our option, return or destroy any copies of the materials you have made.<br>
+	We are not responsible for content posted by third parties on our website (including content posted by investees and investors), including the content of pitches, pitch videos, images and content in the discussions.
+	<h4 style="font-size:1em">RELIANCE ON INFORMATION POSTED</h4>
+	<p style="text-align:justify;font-size: .9em;">Commentary and other materials posted on this Site are not intended to amount to advice. We are not liable or responsible for any reliance placed on such materials by you or anyone who you may inform of any of its contents.
+	<h4 style="font-size:1em">OUR LIABILITY</h4>
+	<p style="text-align:justify;font-size: .9em;">The material displayed on this Site is provided without any guarantees, conditions or warranties as to its accuracy. To the extent permitted by law, we, other members of our group of companies and third parties connected to us hereby expressly exclude:<br>
+	All conditions, warranties and other terms which might otherwise be implied by law.<br>
+	Any liability for any direct, indirect or consequential loss or damage incurred by any user in connection with the Site or in connection with the use, inability to use, or results or the use of this Site, any websites linked to it and any materials posted on it, including, without limitation any liability for:<br>
+	Loss of income or revenue;<br>
+	Loss of business;<br>
+	Loss of profits or contracts;<br>
+	Loss of anticipated savings;<br>
+	Loss of data;<br>
+	Loss of goodwill;<br>
+	Wasted management or office time;​<br>
+	and for any other loss or damage of any kind, however arising and whether caused by breach of contract or otherwise, even if foreseeable.<br>
+	<br>
+	We will not be liable for any loss or damage caused by a denial-of-service attack or viruses that may infect your computer equipment, computer programs, data or other proprietary material due to your use of this Site or to your downloading of any material posted on it, or on any website linked to it.
+	<h4 style="font-size:1em">INFORMATION ABOUT YOU AND YOUR VISITS TO OUR SITE</h4>
+	<p style="text-align:justify;font-size: .9em;">We process information about you in accordance with our Privacy Policy. By using this Site, you consent to such processing and you warrant that all data provided by you is accurate.
+	<h4 style="font-size:1em">VIRUSES, HACKING AND OTHER OFFENCES</h4>
+	<p style="text-align:justify;font-size: .9em;">You must not misuse this Site by knowingly introducing viruses, trojans, worms, logic bombs or other material which is malicious or technologically harmful (together “Viruses”). You must not attempt to gain unauthorised access to the Site, the server on which the Site is stored or any server, computer or database connected to this Site. You must not attack this Site via a denial-of-service attack.<br>
+	By breaching this provision, you may commit a criminal offence. We will report any such breach to the relevant law enforcement authorities and we will co-operate with those authorities by disclosing your identity to them. In the event of such a breach, your rights to use this Site will cease immediately.
+	<h4 style="font-size:1em">LINKING TO OUR SITE AND SCRAPING</h4>
+	<p style="text-align:justify;font-size: .9em;">You may not link to this Site without our prior written permission.<br>
+	You may not scrape content from this site and repost such content, either manually or automatically, without our prior written consent.<br>
+	This Site must not be framed on any other site without our prior written permission.<br>
+	We reserve the right to withdraw linking, scraping and framing permission without notice. <br>
+	If you wish to make any use of material on this Site other than that set out above, please address your request to contact@corion.io.<br>
+	<h4 style="font-size:1em">LINKS FROM OUR SITE</h4>
+	<p style="text-align:justify;font-size: .9em;">Where this Site links to other sites and resources provided by third parties, these links are provided for your information only. We have no control over the contents of those sites or resources, and accept no responsibility for them or for any loss or damage that may arise from your use of them.
+	<h4 style="font-size:1em">JURISDICTION AND APPLICABLE LAW</h4>
+	<p style="text-align:justify;font-size: .9em;">The Swiss courts will have non-exclusive jurisdiction over any claim arising from, or related to, a visit to our site although we retain the right to bring proceedings against you for breach of these conditions in your country of residence or any other relevant country. 
+	<h4 style="font-size:1em">VARIATIONS</h4>
+	<p style="text-align:justify;font-size: .9em;">We may revise these terms of use at any time by amending this page. You are expected to check this page from time to time to take notice of any changes we make, as they are binding on you.
+	<h4 style="font-size:1em">YOUR CONCERNS</h4>
+	<p style="text-align:justify;font-size: .9em;">If you have any concerns about material which appears on our site, please contact contact@corion.io.<br>
+	
+	<h3 style="font-size:1.3em">Privacy policy</h3>
+	<p style="text-align:justify;font-size: .9em;">CORION Platform (“CORION” "we", “us”) are committed to protecting and respecting your privacy.<br>
+	This privacy policy applies to the website www.corion.io (hereinafter: the Site) owned and operated by us. This privacy policy describes how we collect and use the personal information you provide on the Site. It also describes the choices available to you regarding our use of your personal information and how you can access and update this information.
+	<h4 style="font-size:1em">INFORMATION WE MAY COLLECT FROM YOU</h4>
+	<p style="text-align:justify;font-size: .9em;">We collect and process the following data about you provided at the time of requesting services or information from us:<br>
+	Information that you provide to us by filling in forms on the Site. This includes contact information such as name, email address, information that you provide to us when you write to us (including by email).<br>
+	Information that you provide to us by completing surveys.<br>
+	Details of transactions you carry out through Our Site.<br>
+	Information obtained by us from third parties in accordance with this Privacy Policy. <br>
+	As is true of most web sites, we gather certain information automatically and store it in log files. This information includes internet protocol (IP) addresses, browser type, internet service provider (ISP), referring/exit pages, operating system, date/time stamp, and clickstream data. We use this information, to analyze trends, to administer the site, to track users’ movements around the site and to gather demographic information about our user base as a whole. 
+	<h4 style="font-size:1em">USES MADE OF THE INFORMATION</h4>
+	<p style="text-align:justify;font-size: .9em;">We use information held about you in the following ways:<br>
+	To ensure that content from the Site is presented in the most effective manner for you and for your computer.<br>
+	To provide you with information, products or services that you request from us, where you have consented to be contacted for such purposes.<br>
+	To carry out our obligations arising from any contracts entered into between you and us.<br>
+	To notify you about changes to our goods and services.
+	<h4 style="font-size:1em">DISCLOSURE OF YOUR INFORMATION</h4>
+	<p style="text-align:justify;font-size: .9em;">We do not sell your personal information to third parties.<br>
+	We may disclose your personal information to any member of our group, which means our subsidiaries, our ultimate holding company and its subsidiaries.<br>
+	We may provide your personal information to companies that provide services to help us with our business activities such as shiprocessing payments, offering customer services or to improve our business operations. These companies are authorized to use your personal information only as necessary to provide these services to us.<br>
+	We do not disclose information about identifiable individuals to our advertisers, but we may provide them with aggregate information about our users. We may also use such aggregate information to help advertisers reach the kind of audience they want to target. We may make use of the personal data we have collected from you to enable us to comply with our advertisers' wishes by displaying their advertisements to that target audience.
+	<h4 style="font-size:1em">ACCESS TO INFORMATION</h4>
+	<p style="text-align:justify;font-size: .9em;">We will retain your information for as long as your account is active or as needed to provide you services. We will retain and use your information as necessary to comply with our legal obligations, resolve disputes, and enforce our agreements, which in some cases involving the collection and processing of financial data may require a retention period of 7 years.<br>
+	If you wish to subscribe to our newsletter(s), we will use your name and email address to send the newsletter to you. Out of respect for your privacy, you may choose to stop receiving our newsletter or marketing emails by following the unsubscribe instructions included in these emails, accessing the email preferences in your account settings page or you can contact us at contact@corion.io.<br>
+	Similarly, you have the right to ask us not to process your personal data for marketing purposes. We will usually inform you (before collecting your data) if we intend to use your data for such purposes, or if we intend to disclose your information to any third party for such purposes. You can exercise your right to prevent such processing by contacting us at any time.
+	<h4 style="font-size:1em">COOKIES and Tracking Technologies</h4>
+	<p style="text-align:justify;font-size: .9em;">Technologies such as: cookies, beacons, tags and scripts are used by us and our partners, including marketing partners affiliates, or analytics service providers and business process service providers. These technologies are used in analyzing trends, administering the site, tracking users’ movements around the site and to gather demographic information about our user base as a whole. We may receive reports based on the use of these technologies by these companies on an individual as well as aggregated basis.<br>
+	We use cookies for to estimate our audience size and usage pattern; to store information about your preferences, and so allow us to customize the Site according to your individual interests; to speed up your searches; and to recognize you when you return to the Site. Users can control the use of cookies at the individual browser level. If you reject cookies, you may still use our site, but your ability to use some features or areas of our site may be limited.<br>
+	We partner with third party ad networks to either display advertising on our Web site or to manage our advertising on other sites. Our ad network partner uses cookies and Web beacons to collect non-personal information about your activities on this and other Web sites to provide you targeted advertising based upon your interests.<br>
+	Additionally, we use an ad-publishing service to display 3rd party ads on this site. When you view or click on an ad a cookie will be set to help better provide advertisements that may be of interest to you on this and other Web sites. You may opt-out of the use of this cookie by visiting the above tracking preference managers.
+	<h4 style="font-size:1em">HOW WE STORE, PROCESS AND SECURE YOUR PERSONAL DATA</h4>
+	<p style="text-align:justify;font-size: .9em;">The data that we collect from you may be transferred to, and stored at, a destination inside or outside the European Economic Area ("EEA"). It may also be processed by staffs operating inside or outside the EEA who work for us or for one of our suppliers. Such staff maybe engaged in, among other things, the fulfilment of your orders, the processing of your payment details and the provision of support services. By submitting your personal data, you agree to this transfer, storing and/or processing. We will take such steps as we consider reasonably necessary to ensure that your data is treated securely and in accordance with this privacy policy.<br>
+	All information you provide to us via email or the Site is stored on our secure servers.<br>
+	Where we have given you (or where you have chosen) a password which enables you to access certain parts of te Site, you are responsible for keeping this password confidential. We ask you not to share a password with anyone.<br>
+	The security of your personal information is important to us. When you enter sensitive information (such as account information) on our order forms, we encrypt the transmission of that information using secure socket layer technology (SSL).<br>
+	We follow generally accepted standards to protect the personal information submitted to us, both during transmission and once we receive it. No method of transmission over the Internet, or method of electronic storage, is 100% secure, however. Therefore, we cannot guarantee its absolute security. If you have any questions about security on Site, you can contact us at contact@corion.io
+	<h4 style="font-size:1em">ADDITIONAL PRIVACY INFORMATION</h4>
+	<p style="text-align:justify;font-size: .9em;">Links to 3rd Party Sites<br>
+	Our Site may, from time to time, contain links to and from the websites of our suppliers, partner networks, advertisers, affiliates and other third parties. If you follow a link to any of these websites, please note that these websites should have their own privacy policies and we do not accept any responsibility or liability for these policies or the content or operation of these websites. Please check these policies and the terms of the websites before you submit any personal data to these websites.
+	<h4 style="font-size:1em">CHANGES TO OUR PRIVACY POLICY</h4>
+	<p style="text-align:justify;font-size: .9em;">We may update this privacy policy to reflect changes to our information practices. If we make any material changes we will notify you by email (sent to the e-mail address specified in your account) or by means of a notice on this Site prior to the change becoming effective. We encourage you to periodically review this page for the latest information on our privacy practices.
+	<h4 style="font-size:1em">CONTACT</h4>
+	<p style="text-align:justify;font-size: .9em;">Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to:<br>
+	Address:<br>
+	CrypMo Foundation <br>
+	Switzerland <br>
+	6301 Zug, <br>
+	Grafenauweg 10.<br>
+	<br>
+	Email: contact@corion.io
+</p>
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js" async defer ></script>
