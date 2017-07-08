@@ -1,5 +1,9 @@
 <link href="%%RESLINK%%css/preico%%DEVMINFILE%%.css%%RESVERSION%%" rel="stylesheet">
 <div class="navbar-fixed">
+	<!--<ul id="langdrop" class="dropdown-content">
+	  <li><span class="langswitcher" data-switchlangto="en" style="color:#004e92">EN</span></li>
+	  <li><span class="langswitcher" data-switchlangto="cn" style="color:#004e92">CN</span></li>
+	</ul>-->
 	<nav class="white" style="background-color: rgba(255,255,255,0.90) !important;">
 		<div class="nav-wrapper">
 			<a class="brand-logo" href="#atf"><img alt="Corion Logo" src="%%RESLINK%%img/logo.png" style="max-height:80px;" width="217" height="80" title="Corion Logo"></a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons">menu</i></a>
@@ -67,22 +71,23 @@
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="%%LINK%%buy" style="background:rgba(255,111,0, 0.9);color:white !important">Join ICO</a>
 				</li>
+
+				<!--<li>
+					<a class="dropdown-button" href="#!" data-activates="langdrop">Language<i class="material-icons right" style="height: 24px;line-height: 24px;">arrow_drop_down</i></a>
+				</li>-->
 			</ul>
 			<ul class="side-nav" id="mobile-demo">
 				<!--<li>
 					<a class=" blue-text text-darken-4 navlink" href="#vision">Vision</a>
 				</li>
 
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#team">Team</a>
 				</li>
 
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#asseenas">As seen in</a>
 				</li>
-
 -->
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#whitepaper">Whitepapers</a>
@@ -92,26 +97,21 @@
 					<a class=" blue-text text-darken-4 navlink" href="#icobenefits">ICO Benefits</a>
 				</li>
 <!--
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#platform">Platform</a>
 				</li>
-
 
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#roadmap">Roadmap</a>
 				</li>
 
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="#contact">Contact</a>
 				</li>-->
 
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="%%RESLINK%%affiliate">Thank You Reward</a>
 				</li>
-
 
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="%%RESLINK%%faq">FAQ</a>
@@ -125,15 +125,22 @@
 					<a class=" blue-text text-darken-4 navlink" href="%%LINK%%premium">CORION Premium</a>
 				</li>
 
-
 				<li>
 					<a class=" blue-text text-darken-4 navlink" href="%%LINK%%wallet">Wallet Login</a>
 				</li>
 
-
 				<li>
 					<a class=" navlink" href="%%LINK%%buy" style="background:rgba(255,111,0, 0.9);color:white !important">Join ICO</a>
 				</li>
+<!--
+				<li>
+					<a class=" blue-text text-darken-4 navlink" href="#!" class="switchtocn">Switch to CN</a>
+				</li>
+
+				<li>
+					<a class=" blue-text text-darken-4 navlink" href="#!" class="switchtoen">Switch to EN</a>
+				</li>
+-->
 			</ul>
 		</div>
 	</nav>
@@ -1424,7 +1431,7 @@ At CORION he is responsible for the social media campaigns, the contents, and he
 						<h3 style="margin-top:20px">Arogundade Sammy</h3>
 						<span class="separator" style="margin-bottom:20px"></span>
 						<h5>Ambassador for Africa</h5>
-						<p><a class="btn-floating light-blue darken-4" href="https://www.linkedin.com/in/arogundade-shamsin-mba-b002069a" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a> <a class="btn-floating light-blue darken-4" href="ttps://www.facebook.com/arogundade.sampson" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></p>
+						<p><a class="btn-floating light-blue darken-4" href="https://www.linkedin.com/in/arogundade-shamsin-mba-b002069a" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a> <a class="btn-floating light-blue darken-4" href="https://www.facebook.com/arogundade.sampson" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></p>
 						<span class="separator" style="margin-bottom:20px"></span>
 					</div>
 				</div>
@@ -1707,6 +1714,33 @@ var Vissued = %%TOTALCOR%%;
 		});
 		
 		$('.modal').modal();
+
+		$(document).on("click", ".langswitcher", function (e){
+			e.preventDefault();
+			setCookie("language",$(this).data("switchlangto"));
+            /*var expires = new Date();
+            var value=$(this).data("switchlangto").toLowerCase();
+            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = 'language=' + value + ';expires=' + expires.toUTCString()+';path=/;domain=.www.corion.io;secure';*/
+            location.reload(true);
+		});
+		$(document).on("click", ".switchtocn", function (e){
+			e.preventDefault();
+			setCookie("language","cn");
+           /* var expires = new Date();
+            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = 'language=cn;expires=' + expires.toUTCString()+';path=/;domain=.www.corion.io;secure';*/
+            location.reload(true);
+		});
+		$(document).on("click", ".switchtoen", function (e){
+			e.preventDefault();
+			setCookie("language","en");
+           /* var expires = new Date();
+            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = 'language=;expires=' + expires.toUTCString()+';path=/;domain=.www.corion.io;secure';
+            document.cookie = 'language=en;expires=' + expires.toUTCString()+';path=/;domain=.www.corion.io;secure';*/
+            location.reload(true);
+		});
 	})();
 	if ( "%%TRACK%%" == "1" ) {
 		var d = new Date();
