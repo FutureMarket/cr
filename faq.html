@@ -1,0 +1,336 @@
+<style>
+    main, footer {
+      padding-left: 200px;
+    }
+	body{
+		font-family: 'Open Sans';
+		background: url("%%RESLINK%%img/hatter3.jpg") no-repeat top center fixed;
+		color:#444;
+	}
+	nav{
+		background: #fafafa;
+		height:5.3rem;
+		line-height:5.3rem;
+		text-transform:uppercase;
+	}
+	header{
+		height:5rem;
+	}
+	main .container{
+		background: rgba(255,255,255,0.2);
+	}
+	.page-title{
+		position: absolute;
+	    font-size: 3.5rem;
+	    font-weight: 700;
+	    color: rgba(255,111,0,.9);
+	    width: calc(100% - 150px);
+	    right: 0;
+	    vertical-align: middle;
+    	/*text-shadow: 0 0 0.2em #aaa;*/
+	}
+	main h2{
+		display:inline-block;
+		margin:10px auto;
+		text-transform:uppercase;
+		color:#fafafa;
+	}
+	#slide-out{
+		width:200px;
+		top:5.3rem;
+		background: rgba(255,255,255,0.1);
+	}
+	#slide-out li a{
+		color:rgba(255,255,255,1);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+	}
+	.side-nav .userView {
+	    position: relative;
+	    padding: 10px 32px;
+	    margin-bottom: 8px;
+	    background: rgba(255,255,255,0.3);
+	}
+	.collapsible-header{
+		background-color: rgba(255,255,255,0.85);
+    	border-bottom: 1px solid #aaa;
+	}
+	.collapsible-header h4{
+		font-size: 1.5rem;
+	    line-height: 2rem;
+	    margin: 0;
+	    padding: 1.5rem 0;
+	}
+	.collapsible-body{
+		background:#fafafa;
+	}
+	.collapsible-body p{
+		line-height: 175%;
+	}
+	span.badge.new {
+        background-color: #ff5a00;
+	    margin: 0;
+	    font-size: 1rem;
+	    display: inline;
+	    clear: none;
+	    float: none;
+	}
+	span.badge.new:after {
+	    content: "";
+	}
+	.flogo2{
+		display:none;
+	}
+	table tr td {
+		text-align:center;
+	}
+	/*Mobilszabajok*/
+    @media only screen and (max-width : 992px) {
+	    header, main, footer {
+	    	padding-left: 0;
+	    }
+	    #slide-out{
+	    	width:200px;
+	    	top:0;
+			background: rgba(255,255,255,0.9);
+		}
+		#slide-out li a{
+			color:#263238;
+		}
+		nav a.button-collapse{
+			color:rgba(255,111,0,.9);
+			height:5rem;
+			line-height: 5rem;
+		}
+		nav a.button-collapse i{
+			font-size: 3rem;
+			height:5rem;
+			line-height: 5rem;
+		}
+		.flogo{
+			display:none;
+		}
+		.flogo2{
+			display:block;
+		}
+		.page-title{
+	    	width: calc(100%);
+	    	font-size: 1.5rem;
+		}
+		table tr td {
+			text-align:center;
+		}
+    }
+</style>
+<header>
+<div class="navbar-fixed">
+	<nav class="top-nav">
+        <div class="nav-wrapper">
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a><a href="%%RESLINK%%"><img class="responsive-img flogo" src="%%RESLINK%%img/logo.png" style="vertical-align:middle"></a><a class="page-title center-align">Knowledge Base</a></div>
+    </nav>
+</div>
+</header>
+<main>
+	<!--<section id="welcome">
+		<div class="container">
+		    <div class="row" style="margin-bottom:0px">
+		      <div class="col s12">
+		        <div class="card-panel blue darken-4" style="margin:0;">
+		          <span class="white-text"><b>Welcome to the Corion knowledge base!</b><br/>
+We are building this database for faster and better support.<br/><br/>Do You think we are missing something? Can't find the answer? Don't hesitate to contact us at support@corion.io.
+		          </span>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+	</section>-->
+	<section id="icobuy" style="margin-top:25px">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h2>ICO & Purchase</h2>
+				</div>
+				<div class="col s10 offset-s1 left-align">
+					  <ul class="collapsible popout" data-collapsible="accordion">
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">How can I buy CORIONS?</h4></div>
+					      <div class="collapsible-body"><span><p>
+<h5>The ‘PURCHASING PROCESS’</h5>
+Go to <a href="https://corion.io/buy" traget="_blank">https://corion.io/buy</a> and follow the ‘purchasing process’.<br/>
+<b>There are 3 steps:</b><br/>
+<b>1.</b> Decide on the amount of CORIONs you want to purchase and also the currency you want to use to pay (BTC, ETH, ETC). If you find the numbers correct, click on <span class="badge new">Next</span> to go on.<br/><br/>
+<b>2.</b> On the top side of this page you will find the one-use-only Public address where you have to send the currency you will use to pay. At the bottom of the page you can set the CORION (ETC) public address.<br/>
+As default we will generate your CORION (ETC) public address and display the corresponding vital information like private key, brainwallet and backup file.<br/>
+If you want to use your existing CORION / ETC address, choose “I have a CORION / ETC address” option and write it in the field that pops up below.<br/>
+<b style="color:#c5000a">IMPORTANT!</b> We do not save and store private keys, that is why save all the data that appear under ‘Private Details’ for yourself.<br/>
+When you have set all the values as you wanted, click on <span class="badge new">Final step</span> to continue on page 3.<br/><br/>
+<b>3.</b> On this page you can register your CORION Wallet account. It is important to do so because this will ensure you access to all the features of the platform.</p>
+</span></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">I’ve bought CORIONs, where can I see my balance?</h4></div>
+					      <div class="collapsible-body"><span>
+					      <p>
+							<b>If you have followed the purchasing process, got to step 2, sent the currency you chose to the given address, set your Corion (ETC) address and saved the Private key, the Brainwallet and Backup file, but for some reason you did not get onto page 3, the way to link your Corion (ETC) account to a CORION Wallet account is as follows:</b><br/>
+							<b>1.</b> Go to <a href="https://corion.io/buy" traget="_blank">https://corion.io/buy</a> page.<br/>
+							<b>2.</b> Ignore the amount and click on the <span class="badge new">Next</span> button (You don't need to send payment now, if you only want to create an account).<br/>
+							<b>3.</b> On the 2nd page (Payment address) choose the "I already have an ETC address" option.<br/>
+							<b>4.</b> Type in your existing ETC address.<br/>
+							<b>5.</b> Click on the <span class="badge new">Final Step</span><br/>
+							<b>6.</b> on the 3rd page you can make a CORION Wallet account.</p>
+							</span></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">I’ve done my purchase but I cannot see my balance</h4></div>
+					      <div class="collapsible-body">
+					      	<span><p>We accept transactions with a specific amount of confirmations.<br/>
+								The numbers are <b>15 for BTC</b>, <b>50 for ETC</b> and <b>25 for ETH</b>.<br/>
+								After the confirmations, the CORIONS will be transferred to your CORION Wallet.</p>
+							</span></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">I’ve done my purchase but forgot to register</h4></div>
+					      <div class="collapsible-body">
+					      	<span><p>Your CORION balance is available only in your CORION Wallet. The transfers may take a couple hours. If you forgot to register to your CORION Wallet, please follow these steps:<br/>
+					      	<b>If you have followed the purchasing process, got to step 2, sent the currency you chose to the given address, set your Corion (ETC) address and saved the Private key, the Brainwallet and Backup file, but for some reason you did not get onto page 3, the way to link your Corion (ETC) account to a CORION Wallet account is as follows:</b><br/>
+							<b>1.</b> Go to <a href="https://corion.io/buy" traget="_blank">https://corion.io/buy</a> page.<br/>
+							<b>2.</b> Ignore the amount and click on the <span class="badge new">Next</span> button (You don't need to send payment now, if you only want to create an account).<br/>
+							<b>3.</b> On the 2nd page (Payment address) choose the "I already have an ETC address" option.<br/>
+							<b>4.</b> Type in your existing ETC address.<br/>
+							<b>5.</b> Click on the <span class="badge new">Final Step</span><br/>
+							<b>6.</b> on the 3rd page you can make a CORION Wallet account.</p>
+							</span></div>
+					    </li>
+					  </ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="affiliate">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h2>Thank you Reward section</h2>
+				</div>
+				<div class="col s10 offset-s1 left-align">
+					  <ul class="collapsible popout" data-collapsible="accordion">
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">How does Thank you Reward/Refer a Friend work?</h4></div>
+					      <div class="collapsible-body">
+					      	<span><p>If you are already registered in the CORION Wallet, choose the “Refer a Friend” option. In this menu you can see your unique referral URL.<br/><br/>
+
+To be entitled to an Thank you Reward commission the following requirements have to be met: You, as the owner of this link should send it to your friend via email, mobile etc.<br/>
+Your friend clicks on it and follows through the whole purchasing process. Having paid the amount he intended to invest, he signs up and gets registered in CORION Wallet.<br/><br/>
+ 
+These steps are crucial for CORION Platform to identify the referrer and the referred person. If these requirements are not met, the system is not able to generate the Thank you Reward.<br/>
+The commission will be debited on your CORION address during the ICO. Until then you will not see it.<br/><br/>
+ 
+The Thank you Reward will be deposited in your CORION Wallet. It is automated in the official CORION Wallet, in 3<sup>rd</sup> party wallets it is self managed.</p><br/><br/>
+<table class="striped" style="max-width:600px;width:100%;margin:0 auto;">
+				<thead>
+					<tr>
+						<td style="background:#666;color:#ddd;font-weight:700;">CORIONs purchased through referral link</td>
+						<td style="background:#666;color:#ddd;font-weight:700;">Thank you reward Reward in CORIONs</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>&lt; 1,000 COR </td>
+						<td>1 %</td>
+					</tr>
+					<tr>
+						<td>1,000 - 10,000 COR</td>
+						<td>2 %</td>
+					</tr>
+					<tr>
+						<td>10,001 - 100,000 COR</td>
+						<td>3 %</td>
+					</tr>
+					<tr>
+						<td>100,001 - 1,000,000 COR</td>
+						<td>4 %</td>
+					</tr>
+					<tr>
+						<td>&gt; 1,000,000 COR</td>
+						<td>5 %</td>
+					</tr>
+				</tbody>
+			</table>
+ 							</span></div>
+					    </li>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="wallet">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h2>Wallet section</h2>
+				</div>
+				<div class="col s10 offset-s1 left-align">
+					  <ul class="collapsible popout" data-collapsible="accordion">
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">Wallet-backup file?</h4></div>
+					      <div class="collapsible-body">
+					      	<span><p>In case you forgot to save your private key or brain wallet, and <b>you did download the Wallet-backup file</b>, your CORION Wallet is safe.<br/>
+					      	Ok, it will be a little bit technical:<br/><br/>
+At the moment of downloading <b>two files are created, which cannot be used independently</b>.<br/>
+One is generated on the server encrypted and useless on its own.<br/>
+The other gets encrypted on the user side including all the data connected to CORION address. On its own it is useless as well. The file on the user side is the key to release the file created on the server. These two should meet to have access to the data stored in the file.<br/>
+<b>But how do they meet?</b><br>CORION Wallet has a function to allow to import different accounts. This happens to CORION addresses as well. Well, if you do not have other than your Wallet-backup file, the only thing you have to do is to sign in your wallet, choose <b>Import in the Account settings menu</b> and upload the file.</p> 
+							</span></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><h4 class="blue-text text-darken-4">What is "Release"?</h4></div>
+					      <div class="collapsible-body">
+					      	<span><p><b>Release = Token release</b><br/>The token release method will work after the ICO as described in the Business Whitepaper. During the ICO though, you gain a constant token release of 0.025% every 3 hours based on your current balance.</p> 
+							</span></div>
+					    </li>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--<section id="general">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h2>General section</h2>
+				</div>
+				<div class="col s12 center-align">
+					<h2></h2>
+				</div>
+			</div>
+		</div>
+	</section>-->
+	<section id="foot">
+		<div class="container center-align">
+			<div class="col s12">
+				<p style="color:white;padding:1em 0">If you couldn't find your answer or just want to contact us:</p>
+					<a href="http://support.corion.io/s/login/68626" class="btn btn-large amber darken-4" style="border-radius:50px;margin:0 auto 2em auto;font-weight:700;">CORION client support</a>
+			</div>
+		</div>
+	</section>
+</main>
+
+<ul id="slide-out" class="side-nav fixed">
+<a href="%%RESLINK%%"><img class="responsive-img flogo2" src="%%RESLINK%%img/logo.png" style="vertical-align:middle"></a>
+    <li><a href="#icobuy">ICO & Purchase</a></li>
+    <li><a href="#affiliate">Thank you Reward</a></li>
+    <li><a href="#wallet">Wallet</a></li>
+    <!--<li><a href="#general">General</a></li>-->
+</ul>
+<script>
+	$(document).ready(function(){
+
+  $(".button-collapse").sideNav();
+
+		$('a[href^="mailto:"]').each(function() {
+		  this.href = this.href.replace('[at]', '@').replace(/\(dot\)/g, '.');
+		  // Remove this line if you don't want to set the email address as link text:
+		  this.innerHTML = this.href.replace('mailto:', '');
+		 });
+	});
+</script>
