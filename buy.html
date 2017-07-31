@@ -17,6 +17,7 @@
 	var existingaddress = "%%USERADDRESS%%";
 </script>
 <!-- multistep form -->
+
 <div id="msform" class="row" style="margin-bottom:0px;">
 	<div class="paytothisaddr col s12">
 		<img src="//corion.io/img/logo.png">
@@ -39,6 +40,13 @@
 			<li clsaa="col m4 s12">Wallet registration</li>
 		</ul>
 	</div>
+	<div id="maintenance" class="row">
+		<h2 class="fs-title">Here we go, we are deploying CORION Smart Contracts to the ETC Blockchain right now!</h2>
+		<p>To avoid any issues, we’ve suspended the CORION purchase process for this time.<br/>
+			We will be back within a few hours, stay tuned!<br/><br/>
+			<b>CORION Team</b>
+		</p>
+	</div>
 	<!-- steps -->
 	<div class="step-1 row" style="margin-bottom:0px;">
 		<div class="col s12">
@@ -57,7 +65,7 @@
 				<div lang="en-US">
 					<input type="number" id="corexd" placeholder="0.5" min="0" max="" step="0.0000000001"/>
 					<select name="sources" id="sources" class="currency-select sources" placeholder="Currency">
-						<option id="curbtc" value="BTC">BTC</option>
+						<!--<option id="curbtc" value="BTC">BTC</option>-->
 						<option id="cureth" value="ETH">ETH</option>
 						<option id="curetc" value="ETC">ETC</option>
 					</select>
@@ -69,12 +77,6 @@
 					<button class="to-step-2 action-button">Next</button>
 				</div>
 				<p style="text-align:center;font-size:.7em">Do you have any question? <a href="%%RESLINK%%faq" target="_blank">Here are the answers</a></p>
-				<div class="g-recaptcha"
-			          data-sitekey="6LfGFh0UAAAAAKk7my9UQmxKVyPp8xvJyq7z4GcB"
-			          data-callback="captcha_callback_step2"
-			          data-size="invisible"
-			          data-badge="inline">
-			    </div>
 			</form>
 		</div>
 	</div>
@@ -313,4 +315,3 @@
 		</div>
 	</div>
 </div>
-<script src="https://www.google.com/recaptcha/api.js" async defer ></script>
